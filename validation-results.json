@@ -1,0 +1,158 @@
+{
+  "project": "research-search",
+  "executed_at_utc": "2026-10-10T17:43:26.815279+00:00",
+  "kind": "actual automated validation using fictional or synthetic data",
+  "not_user_traffic": true,
+  "scenario_count": 10,
+  "passed": 10,
+  "results": [
+    {
+      "scenario": 1,
+      "input": {
+        "query": "machine learning validation"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Machine learning validation",
+          "Database application design"
+        ],
+        "scores": [
+          0.4977,
+          0.1046
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 2,
+      "input": {
+        "query": "SQLite"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Database application design"
+        ],
+        "scores": [
+          0.2615
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 3,
+      "input": {
+        "query": "logistic classification"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Machine learning validation"
+        ],
+        "scores": [
+          0.3471
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 4,
+      "input": {
+        "query": "software tests"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Software engineering practices"
+        ],
+        "scores": [
+          0.5251
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 5,
+      "input": {
+        "query": "Sobel edges"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Computer vision foundations"
+        ],
+        "scores": [
+          0.3433
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 6,
+      "input": {
+        "query": "graph routes"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Graph route planning"
+        ],
+        "scores": [
+          0.5098
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 7,
+      "input": {
+        "query": "data leakage"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Machine learning validation"
+        ],
+        "scores": [
+          0.3471
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 8,
+      "input": {
+        "query": "REST APIs"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Database application design"
+        ],
+        "scores": [
+          0.3699
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 9,
+      "input": {
+        "query": "convolution"
+      },
+      "output_summary": {
+        "ranked_titles": [
+          "Computer vision foundations"
+        ],
+        "scores": [
+          0.2428
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scenario": 10,
+      "input": {
+        "query": "unknownxyz"
+      },
+      "output_summary": {
+        "ranked_titles": [],
+        "scores": []
+      },
+      "passed": true
+    }
+  ]
+}
