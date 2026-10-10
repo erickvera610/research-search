@@ -5,7 +5,7 @@ def tokens(text): return re.findall(r'[a-z0-9]+',text.lower())
 def search(query,documents=DOCUMENTS):
     if not isinstance(query,str) or not query.strip(): raise ValueError('Enter a query')
     if not documents:return []
-    terms=[Counter(tokens(d['text'])) for d in documents]
+    terms=[Counter(tokens(d['title']+' '+d['text'])) for d in documents]
     vocabulary=set().union(*(set(t) for t in terms))
     idf={t:math.log((len(documents)+1)/(1+sum(t in d for d in terms)))+1 for t in vocabulary}
     def vector(counter):return {t:c*idf[t] for t,c in counter.items() if t in idf}
