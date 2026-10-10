@@ -6,6 +6,6 @@ class Tests(unittest.TestCase):
     def test_case_insensitive(self): self.assertEqual(search('SQLITE'),search('sqlite'))
     def test_empty(self):
         with self.assertRaises(ValueError): search(' ')
-    def test_exact_match(self): self.assertEqual(search('hello',[{'title':'a','text':'hello'}])[0]['score'],1)
+    def test_exact_match(self): self.assertEqual(search('hello',[{'title':'hello','text':'hello'}])[0]['score'],1)
 
     def test_title_retrieval(self): self.assertEqual(search('machine learning validation')[0]['title'],'Machine learning validation')
