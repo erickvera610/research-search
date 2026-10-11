@@ -49,3 +49,11 @@ Create a feature branch, make one small change, run the tests, commit it, push t
 - https://docs.github.com/en/actions/tutorials/build-and-test-code/python
 
 License: MIT.
+
+## Trained model with real data
+
+[Interactive model demo](https://erickvera610.github.io/research-search/model-demo.html) · [Model card](MODEL_CARD.md) · [Training and tests](https://github.com/erickvera610/research-search/actions)
+
+Install `pip install -r requirements-model.txt`, run `python train_model.py`, then `python -m unittest discover -v` and `node test_model.cjs`. Run `python model_server.py` for the connected Python inference API at http://127.0.0.1:8001.
+
+The original demonstration remains available. This new experiment trains on downloaded public data with checksum verification and separate validation/test partitions. Exported weights execute in the browser and Python API; see the model card for limitations and the exact relation to internship skills.

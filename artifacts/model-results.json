@@ -1,0 +1,325 @@
+{
+  "task": "Scientific abstract sentence-role classification",
+  "dataset": "PubMed 20k RCT (original text)",
+  "sentences": {
+    "train": 180040,
+    "validation": 30212,
+    "test": 30135
+  },
+  "abstracts": {
+    "train": 15000,
+    "validation": 2500,
+    "test": 2500
+  },
+  "abstract_id_overlap": 0,
+  "protocol": "Official abstract-level train/dev/test splits. Fit TF-IDF on train only for C selection by validation macro F1; refit on train+dev; evaluate test once. No positional features or sentence labels as inputs.",
+  "validation_macro_f1": {
+    "0.5": 0.7068059068775155,
+    "2": 0.704806132052397
+  },
+  "selected_C": 0.5,
+  "test_accuracy": 0.7672142027542724,
+  "test_macro_f1": 0.7019563510608845,
+  "baseline_accuracy": 0.32842210054753607,
+  "baseline_macro_f1": 0.09889088729016786,
+  "confusion_matrix": [
+    [
+      2140,
+      620,
+      321,
+      420,
+      120
+    ],
+    [
+      544,
+      2968,
+      230,
+      77,
+      752
+    ],
+    [
+      195,
+      117,
+      8651,
+      109,
+      825
+    ],
+    [
+      667,
+      233,
+      207,
+      1169,
+      57
+    ],
+    [
+      59,
+      393,
+      1058,
+      11,
+      8192
+    ]
+  ],
+  "classes": [
+    "BACKGROUND",
+    "CONCLUSIONS",
+    "METHODS",
+    "OBJECTIVE",
+    "RESULTS"
+  ],
+  "classification_report": {
+    "BACKGROUND": {
+      "precision": 0.5936199722607489,
+      "recall": 0.5909969621651477,
+      "f1-score": 0.5923055632438416,
+      "support": 3621.0
+    },
+    "CONCLUSIONS": {
+      "precision": 0.6852920803509582,
+      "recall": 0.6493108728943339,
+      "f1-score": 0.6668164457425297,
+      "support": 4571.0
+    },
+    "METHODS": {
+      "precision": 0.8265023406897869,
+      "recall": 0.8741032636152369,
+      "f1-score": 0.8496366136318995,
+      "support": 9897.0
+    },
+    "OBJECTIVE": {
+      "precision": 0.654535274356103,
+      "recall": 0.501071581654522,
+      "f1-score": 0.5676134984219471,
+      "support": 2333.0
+    },
+    "RESULTS": {
+      "precision": 0.8236476975668611,
+      "recall": 0.8434057448779986,
+      "f1-score": 0.8334096342642047,
+      "support": 9713.0
+    },
+    "accuracy": 0.7672142027542724,
+    "macro avg": {
+      "precision": 0.7167194730448917,
+      "recall": 0.6917776850414479,
+      "f1-score": 0.7019563510608845,
+      "support": 30135.0
+    },
+    "weighted avg": {
+      "precision": 0.7628665195349903,
+      "recall": 0.7672142027542724,
+      "f1-score": 0.7639210238107379,
+      "support": 30135.0
+    }
+  },
+  "worst_errors": [
+    {
+      "pmid": "24369765",
+      "sentence_index": 13598,
+      "actual": "METHODS",
+      "predicted": "RESULTS",
+      "probability": 0.9996471125748728
+    },
+    {
+      "pmid": "24225780",
+      "sentence_index": 9467,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9981530901462367
+    },
+    {
+      "pmid": "25263393",
+      "sentence_index": 25664,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9981144753515159
+    },
+    {
+      "pmid": "25265976",
+      "sentence_index": 20346,
+      "actual": "RESULTS",
+      "predicted": "METHODS",
+      "probability": 0.9954099908727375
+    },
+    {
+      "pmid": "24958780",
+      "sentence_index": 29826,
+      "actual": "RESULTS",
+      "predicted": "METHODS",
+      "probability": 0.9951047377896901
+    },
+    {
+      "pmid": "25472980",
+      "sentence_index": 4699,
+      "actual": "RESULTS",
+      "predicted": "METHODS",
+      "probability": 0.9949206547722903
+    },
+    {
+      "pmid": "24803436",
+      "sentence_index": 895,
+      "actual": "RESULTS",
+      "predicted": "METHODS",
+      "probability": 0.9941866532374736
+    },
+    {
+      "pmid": "25190617",
+      "sentence_index": 9663,
+      "actual": "BACKGROUND",
+      "predicted": "METHODS",
+      "probability": 0.9936722928512782
+    },
+    {
+      "pmid": "24915175",
+      "sentence_index": 12158,
+      "actual": "METHODS",
+      "predicted": "RESULTS",
+      "probability": 0.9935467712326634
+    },
+    {
+      "pmid": "24285458",
+      "sentence_index": 9370,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9930418724659368
+    },
+    {
+      "pmid": "25128076",
+      "sentence_index": 24878,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9928370887847573
+    },
+    {
+      "pmid": "24445278",
+      "sentence_index": 25922,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9923735938385665
+    },
+    {
+      "pmid": "25085036",
+      "sentence_index": 2341,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9907706745595709
+    },
+    {
+      "pmid": "24433710",
+      "sentence_index": 23075,
+      "actual": "METHODS",
+      "predicted": "RESULTS",
+      "probability": 0.9903818641685633
+    },
+    {
+      "pmid": "24657991",
+      "sentence_index": 9878,
+      "actual": "RESULTS",
+      "predicted": "METHODS",
+      "probability": 0.9901323037642304
+    },
+    {
+      "pmid": "24911427",
+      "sentence_index": 29642,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9898497687768765
+    },
+    {
+      "pmid": "24635755",
+      "sentence_index": 29170,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.989545132706714
+    },
+    {
+      "pmid": "25200848",
+      "sentence_index": 9130,
+      "actual": "METHODS",
+      "predicted": "RESULTS",
+      "probability": 0.9894121555733496
+    },
+    {
+      "pmid": "25828372",
+      "sentence_index": 27527,
+      "actual": "CONCLUSIONS",
+      "predicted": "RESULTS",
+      "probability": 0.9893382710134374
+    },
+    {
+      "pmid": "24915066",
+      "sentence_index": 19047,
+      "actual": "RESULTS",
+      "predicted": "METHODS",
+      "probability": 0.989269739743999
+    }
+  ],
+  "examples": [
+    {
+      "text": "We aimed to assess the effect of exercise on blood pressure.",
+      "label": "BACKGROUND",
+      "probabilities": {
+        "BACKGROUND": 0.5669231470384526,
+        "CONCLUSIONS": 0.001828186676621033,
+        "METHODS": 0.009528928511312844,
+        "OBJECTIVE": 0.42063772313720327,
+        "RESULTS": 0.0010820146364101026
+      },
+      "out_of_vocabulary": false
+    },
+    {
+      "text": "Patients were randomly assigned to receive treatment or placebo.",
+      "label": "METHODS",
+      "probabilities": {
+        "BACKGROUND": 0.00028870847311821484,
+        "CONCLUSIONS": 0.00014755462728133984,
+        "METHODS": 0.9019593113972372,
+        "OBJECTIVE": 8.762175092972341e-05,
+        "RESULTS": 0.0975168037514334
+      },
+      "out_of_vocabulary": false
+    },
+    {
+      "text": "The treatment group showed a significant decrease in blood pressure.",
+      "label": "RESULTS",
+      "probabilities": {
+        "BACKGROUND": 0.004223168863500214,
+        "CONCLUSIONS": 0.019407085484128374,
+        "METHODS": 0.0008562558048580576,
+        "OBJECTIVE": 0.0011228328150034684,
+        "RESULTS": 0.9743906570325098
+      },
+      "out_of_vocabulary": false
+    },
+    {
+      "text": "These findings support further investigation of the intervention.",
+      "label": "CONCLUSIONS",
+      "probabilities": {
+        "BACKGROUND": 0.00109138907736077,
+        "CONCLUSIONS": 0.961902560438112,
+        "METHODS": 0.00333759884031618,
+        "OBJECTIVE": 0.0002372973070693257,
+        "RESULTS": 0.03343115433714182
+      },
+      "out_of_vocabulary": false
+    },
+    {
+      "text": "Cardiovascular disease is a major public health problem.",
+      "label": "BACKGROUND",
+      "probabilities": {
+        "BACKGROUND": 0.9026515093806589,
+        "CONCLUSIONS": 0.02493906835505772,
+        "METHODS": 0.021662871859573125,
+        "OBJECTIVE": 0.04785992584424832,
+        "RESULTS": 0.0028866245604619186
+      },
+      "out_of_vocabulary": false
+    }
+  ],
+  "source_sha256": {
+    "train": "8fda243202edd207fb61214e21f5629bba545522b921816d20d516e64d602d5b",
+    "dev": "8561119a162708a87e3138103470d10781c6b94ba390183d7d6df6297a738a25",
+    "test": "8511b832c1ee66b3df52df23c16ad81a69711ddd5b3a485421da3f8e9d5b44f4"
+  },
+  "limits": "Supervised multinomial logistic regression with 1000 TF-IDF features; not a neural network, transformer, LLM, semantic search or clinical decision system. Single benchmark and uncalibrated probabilities. Dataset abstracts may be copyrighted; raw texts are downloaded for reproduction and not redistributed here. Demo sentences are newly written illustrative inputs, not held-out evidence.",
+  "model_sha256": "8973e6e9f455635272822007ca98af1b9d666f00afe2a2c87cbed57ff755d10e"
+}
