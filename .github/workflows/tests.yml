@@ -30,7 +30,6 @@ jobs:
           path: |
             artifacts/*.json
           retention-days: 30
-
   pytorch:
     runs-on: ubuntu-latest
     steps:
@@ -48,3 +47,12 @@ jobs:
             artifacts/pytorch-text-results.json
             artifacts/pytorch-text.pt
           retention-days: 30
+  container-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t research-search .
+      - run: docker run -d --name research-search -p 8001:8001 research-search
+      - run: sleep 3 && curl --fail http://127.0.0.1:8001/health
+      - if: always()
+        run: docker rm -f research-search || true
