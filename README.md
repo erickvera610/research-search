@@ -1,59 +1,105 @@
 # Research Search
 
-Explainable local document retrieval with TF-IDF, cosine similarity, and matched terms.
+> **Recruiter quick view:** real PubMed benchmark, official train/dev/test splits, explainable TF-IDF/logistic baseline, PyTorch neural baseline, robustness testing, browser/Python parity, error analysis, tests, and CI. Start with [RECRUITER_OVERVIEW.md](RECRUITER_OVERVIEW.md), [PORTFOLIO_EVIDENCE.md](PORTFOLIO_EVIDENCE.md), [MODEL_CARD.md](MODEL_CARD.md), and the [interactive model demo](https://erickvera610.github.io/research-search/model-demo.html).
 
-An AI-assisted educational portfolio project prepared for Erik Vera's internship learning. This is a working prototype, not production software. Authorship and skills should be represented based on what you can explain and change independently.
+## Real-data scientific text classification
 
-## Try in your browser
+The main experiment uses **PubMed 20k RCT** with official abstract-level splits:
 
-[Open the live demo](https://erickvera610.github.io/research-search/). The static JavaScript demo runs on the visitor's device and cannot change repository code. The Python implementation below provides the local backend. ML random-number generators differ between runtimes, so exact metrics differ. Tracker browser storage is localStorage; Python storage is SQLite.
+- Train: **180,040 sentences**
+- Validation: **30,212 sentences**
+- Test: **30,135 sentences**
+- Distinct abstracts: 15,000 / 2,500 / 2,500
+- Abstract overlap across partitions: **0**
 
-## Run in two minutes
+The explainable baseline uses TF-IDF with up to 1,000 word features and multinomial logistic regression. Hyperparameter selection uses validation macro F1; the official test split is evaluated after model selection.
 
-Requires Python 3.11 or newer; no pip dependencies.
+Held-out results:
+
+| Metric | Trained model | Majority baseline |
+|---|---:|---:|
+| Accuracy | **76.72%** | **32.84%** |
+| Macro F1 | **0.7020** | **0.0989** |
+
+The classifier predicts BACKGROUND, OBJECTIVE, METHODS, RESULTS, or CONCLUSIONS for individual scientific-abstract sentences.
+
+## PyTorch neural baseline
+
+`pytorch_text_baseline.py` adds a lightweight neural comparison using `EmbeddingBag(mean, 64) -> Linear(5)`.
 
 ```bash
-git clone https://github.com/erickvera610/research-search.git
-cd research-search
+python -m pip install -r requirements-pytorch.txt
+python pytorch_text_baseline.py
+```
+
+The neural baseline is intentionally small. It demonstrates PyTorch training and representation learning; it is **not** a transformer, pretrained language model, or LLM. Results are written to `artifacts/pytorch-text-results.json` and should not be quoted until reproduced in the current environment.
+
+## Robustness evaluation
+
+`robustness_benchmark.py` reports:
+
+- clean test accuracy and macro F1,
+- performance by sentence-length group,
+- deterministic token-dropout stress performance,
+- prediction change rate after token removal.
+
+```bash
+python robustness_benchmark.py
+```
+
+This stress test exposes brittleness; token deletion is synthetic and does not establish clinical or out-of-domain robustness.
+
+## Explainability and failure analysis
+
+The main model exports:
+
+- confusion matrix,
+- per-class precision/recall/F1,
+- 20 confidently wrong test predictions,
+- PMID and sentence index for error inspection.
+
+This makes failure analysis directly inspectable instead of showing only an aggregate score.
+
+## Demo and reproducibility
+
+**[Interactive trained-model demo](https://erickvera610.github.io/research-search/model-demo.html)** · [Model card](MODEL_CARD.md) · [Actions](https://github.com/erickvera610/research-search/actions)
+
+```bash
+python -m pip install -r requirements-model.txt
+python train_model.py
+python -m unittest discover -v
+node test_model.cjs
+python model_server.py
+```
+
+The public demo uses exported trained parameters. The Python API uses the same parameters, and parity tests compare browser and Python predictions.
+
+## Original retrieval prototype
+
+The repository also preserves an explainable local retrieval prototype based on TF-IDF, cosine similarity, and matched terms. It runs locally with no external API and does not claim semantic understanding, synonym resolution, or answer generation.
+
+```bash
 python app.py
 ```
 
-Open http://127.0.0.1:8000. On Windows, use `py app.py` if `python` is unavailable. Stop with Ctrl+C. Run `python -m unittest discover -v` to execute tests.
+## Skills demonstrated
 
-## Architecture
+Python, NLP preprocessing, TF-IDF, multinomial logistic regression, PyTorch, EmbeddingBag, official train/dev/test evaluation, macro F1, confusion matrices, error analysis, robustness testing, model export, inference APIs, tests, and CI.
 
-- `index.html`: responsive accessible interface; renders output with textContent.
-- `app.py`: local HTTP service, `/health`, and validated JSON POST `/api/run`.
-- `core.py`: domain logic separated from transport and presentation.
-- `test_core.py`: deterministic behavior and failure cases.
-- `.github/workflows/tests.yml`: Python 3.11 and 3.12 CI.
-- `TUTORIAL_ES.md`: beginner Spanish guide and interview practice.
+## Key files
 
-## API
+- `train_model.py` — official-split TF-IDF/logistic experiment.
+- `pytorch_text_baseline.py` — PyTorch neural baseline.
+- `robustness_benchmark.py` — test-set robustness checks.
+- `MODEL_CARD.md` — full protocol, results, errors, and limitations.
+- `artifacts/model-results.json` — held-out metrics and errors.
+- `RECRUITER_OVERVIEW.md` — recruiter review path and screenshot checklist.
+- `PORTFOLIO_EVIDENCE.md` — evidence summary.
 
-POST a JSON object to `/api/run`; inputs are the same fields used by the interface. Responses are JSON. Invalid inputs return 400; unknown paths return 404. GET `/health` returns `{"status":"ok"}`.
+## Limitations
 
-## Design and limits
+The main model is a 1,000-feature TF-IDF classifier and does not model deep semantic context. The PyTorch baseline is deliberately lightweight. Neither model is a clinical decision system, semantic search engine, transformer, or production NLP service. Dataset abstracts may have copyright restrictions; raw source text is downloaded for reproduction and is not redistributed by the project.
 
-Un token es una palabra normalizada. TF cuenta repeticiones; IDF da más peso a palabras menos frecuentes. Cada documento se convierte en un vector. La similitud del coseno compara su dirección con la consulta. El puntaje no es una probabilidad. Esta búsqueda encuentra palabras, no entiende sinónimos ni genera respuestas. Puedes ampliar DOCUMENTS con textos propios sin compartir documentos privados.
+## Authorship
 
-The built-in HTTP server is for a local demonstration. There is no authentication, rate limiting, or public production deployment. Never enter personal application records on a publicly exposed demo. Bind to localhost by default. For Codespaces only, run `HOST=0.0.0.0 python app.py` and keep the forwarded port private; usage may consume your GitHub quota.
-
-## Review and contribution workflow
-
-Create a feature branch, make one small change, run the tests, commit it, push the branch, and open a pull request. Explain the change and validation. Do not fabricate collaboration or commit history. Suggested first improvement: add a new input option with one behavior test and update this README.
-
-## References
-
-- https://docs.python.org/3/library/http.server.html
-- https://docs.github.com/en/actions/tutorials/build-and-test-code/python
-
-License: MIT.
-
-## Trained model with real data
-
-[Interactive model demo](https://erickvera610.github.io/research-search/model-demo.html) · [Model card](MODEL_CARD.md) · [Training and tests](https://github.com/erickvera610/research-search/actions)
-
-Install `pip install -r requirements-model.txt`, run `python train_model.py`, then `python -m unittest discover -v` and `node test_model.cjs`. Run `python model_server.py` for the connected Python inference API at http://127.0.0.1:8001.
-
-The original demonstration remains available. This new experiment trains on downloaded public data with checksum verification and separate validation/test partitions. Exported weights execute in the browser and Python API; see the model card for limitations and the exact relation to internship skills.
+Independent AI-assisted learning project in Erik Vera's portfolio. No employer affiliation or proprietary employer data. Code is MIT licensed; dataset provenance and rights are documented separately.
