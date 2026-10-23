@@ -1,0 +1,26 @@
+{
+  "project": "research-search",
+  "date_utc": "2026-10-23",
+  "executed_at_utc": "2026-10-23T17:13:37.085906+00:00",
+  "data_kind": "fictional/synthetic",
+  "execution_method": "Python script",
+  "seed": 20261023,
+  "input": {
+    "query": "SQLite APIs"
+  },
+  "output": {
+    "results": [
+      {
+        "title": "Database application design",
+        "text": "SQLite transactions parameterized queries validation and REST APIs support application tracking.",
+        "score": 0.3699,
+        "matched_terms": [
+          "apis",
+          "sqlite"
+        ]
+      }
+    ],
+    "method": "TF-IDF cosine similarity; lexical retrieval, not an LLM"
+  },
+  "completed": true
+}
