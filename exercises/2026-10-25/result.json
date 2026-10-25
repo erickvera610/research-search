@@ -1,0 +1,26 @@
+{
+  "project": "research-search",
+  "date_utc": "2026-10-25",
+  "executed_at_utc": "2026-10-25T16:29:16.657473+00:00",
+  "data_kind": "fictional/synthetic",
+  "execution_method": "Python script",
+  "seed": 20261025,
+  "input": {
+    "query": "software tests"
+  },
+  "output": {
+    "results": [
+      {
+        "title": "Software engineering practices",
+        "text": "Version control pull requests automated tests and continuous integration improve software reliability.",
+        "score": 0.5251,
+        "matched_terms": [
+          "software",
+          "tests"
+        ]
+      }
+    ],
+    "method": "TF-IDF cosine similarity; lexical retrieval, not an LLM"
+  },
+  "completed": true
+}
