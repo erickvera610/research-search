@@ -1,0 +1,26 @@
+{
+  "project": "research-search",
+  "date_utc": "2026-10-30",
+  "executed_at_utc": "2026-10-30T18:03:36.499292+00:00",
+  "data_kind": "fictional/synthetic",
+  "execution_method": "Python script",
+  "seed": 20261030,
+  "input": {
+    "query": "graph route"
+  },
+  "output": {
+    "results": [
+      {
+        "title": "Graph route planning",
+        "text": "Shortest path algorithms Dijkstra and breadth first search find routes through graph obstacles.",
+        "score": 0.5098,
+        "matched_terms": [
+          "graph",
+          "route"
+        ]
+      }
+    ],
+    "method": "TF-IDF cosine similarity; lexical retrieval, not an LLM"
+  },
+  "completed": true
+}
