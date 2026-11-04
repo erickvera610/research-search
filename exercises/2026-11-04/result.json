@@ -1,0 +1,26 @@
+{
+  "project": "research-search",
+  "date_utc": "2026-11-04",
+  "executed_at_utc": "2026-11-04T19:50:01.951668+00:00",
+  "data_kind": "fictional/synthetic",
+  "execution_method": "Python script",
+  "seed": 20261104,
+  "input": {
+    "query": "Sobel convolution"
+  },
+  "output": {
+    "results": [
+      {
+        "title": "Computer vision foundations",
+        "text": "Image filtering convolution Sobel edges and geometric transformations support computer vision.",
+        "score": 0.3433,
+        "matched_terms": [
+          "convolution",
+          "sobel"
+        ]
+      }
+    ],
+    "method": "TF-IDF cosine similarity; lexical retrieval, not an LLM"
+  },
+  "completed": true
+}
