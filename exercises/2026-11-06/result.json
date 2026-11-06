@@ -1,0 +1,26 @@
+{
+  "project": "research-search",
+  "date_utc": "2026-11-06",
+  "executed_at_utc": "2026-11-06T19:28:15.657625+00:00",
+  "data_kind": "fictional/synthetic",
+  "execution_method": "Python script",
+  "seed": 20261106,
+  "input": {
+    "query": "machine learning"
+  },
+  "output": {
+    "results": [
+      {
+        "title": "Machine learning validation",
+        "text": "Training validation test splits prevent data leakage. Logistic regression predicts probabilities for classification.",
+        "score": 0.3471,
+        "matched_terms": [
+          "learning",
+          "machine"
+        ]
+      }
+    ],
+    "method": "TF-IDF cosine similarity; lexical retrieval, not an LLM"
+  },
+  "completed": true
+}
