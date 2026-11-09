@@ -1,0 +1,32 @@
+{
+  "clean": {
+    "no_prediction_count": 88,
+    "accuracy": 0.7668159946905592,
+    "macro_f1": 0.7024605669702938
+  },
+  "by_sentence_length": {
+    "short_0_12": {
+      "n": 6876,
+      "accuracy": 0.7484002326934264,
+      "macro_f1": 0.618116459456569
+    },
+    "medium_13_25": {
+      "n": 15586,
+      "accuracy": 0.7668420377261645,
+      "macro_f1": 0.7009620335944946
+    },
+    "long_26_plus": {
+      "n": 7673,
+      "accuracy": 0.7832659976541119,
+      "macro_f1": 0.7195823177168374
+    }
+  },
+  "token_dropout_20pct_approx": {
+    "accuracy": 0.7474033515845363,
+    "macro_f1": 0.681590159645928,
+    "prediction_change_rate": 0.09241745478679277,
+    "no_prediction_count": 90
+  },
+  "protocol": "Official test split only; deterministic removal of every fifth whitespace token; no robustness-specific tuning.",
+  "limitations": "Token deletion is synthetic. These results do not establish clinical, semantic, or out-of-domain robustness."
+}
