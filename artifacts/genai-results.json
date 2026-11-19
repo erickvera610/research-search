@@ -1,0 +1,212 @@
+{
+  "model": "google/flan-t5-small",
+  "revision": "0fc9ddf78a1e988dac52e2dac162b0ede4fd74ab",
+  "device": "cpu",
+  "decoding": {
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 48
+  },
+  "scope": "8 hand-written development checks, no tuning or held-out generalization claim",
+  "versions": {
+    "torch": "2.15.0+cpu",
+    "transformers": "4.57.1",
+    "sentencepiece": "0.2.3",
+    "safetensors": "0.8.0"
+  },
+  "sha256": {
+    "genai_qa.py": "f20887c544728ab663ff2d2d3b6874495654eca15913d1885d310f344eb4c4d3",
+    "core.py": "291889a5adcc749d15806b78af6314fa6f26a915246775c6fd0c0b0975475e24",
+    "evaluate_genai.py": "7746c14166960ad4dbbaad229a9e8107ce794188e449bfb7600fcccf382099d0"
+  },
+  "fragment_pass_count": 6,
+  "cases": [
+    {
+      "question": "Which algorithm predicts probabilities for classification?",
+      "answer": "Logistic regression",
+      "status": "generated_unverified",
+      "sources": [
+        {
+          "title": "Machine learning validation",
+          "text": "Training validation test splits prevent data leakage. Logistic regression predicts probabilities for classification.",
+          "score": 0.4908,
+          "matched_terms": [
+            "classification",
+            "for",
+            "predicts",
+            "probabilities"
+          ]
+        }
+      ],
+      "expected_fragments": [
+        "logistic regression"
+      ],
+      "expected_source": "Machine learning validation",
+      "all_expected_fragments_present": true,
+      "expected_source_retrieved": true
+    },
+    {
+      "question": "Which practices improve software reliability?",
+      "answer": "Continuous integration",
+      "status": "generated_unverified",
+      "sources": [
+        {
+          "title": "Software engineering practices",
+          "text": "Version control pull requests automated tests and continuous integration improve software reliability.",
+          "score": 0.6189,
+          "matched_terms": [
+            "improve",
+            "practices",
+            "reliability",
+            "software"
+          ]
+        }
+      ],
+      "expected_fragments": [
+        "automated tests",
+        "continuous integration"
+      ],
+      "expected_source": "Software engineering practices",
+      "all_expected_fragments_present": false,
+      "expected_source_retrieved": true
+    },
+    {
+      "question": "Which algorithms find shortest routes through graph obstacles?",
+      "answer": "Dijkstra and breadth first search",
+      "status": "generated_unverified",
+      "sources": [
+        {
+          "title": "Graph route planning",
+          "text": "Shortest path algorithms Dijkstra and breadth first search find routes through graph obstacles.",
+          "score": 0.7266,
+          "matched_terms": [
+            "algorithms",
+            "find",
+            "graph",
+            "obstacles",
+            "routes",
+            "shortest",
+            "through"
+          ]
+        }
+      ],
+      "expected_fragments": [
+        "dijkstra",
+        "breadth first search"
+      ],
+      "expected_source": "Graph route planning",
+      "all_expected_fragments_present": true,
+      "expected_source_retrieved": true
+    },
+    {
+      "question": "Which database supports transactions and parameterized queries?",
+      "answer": "SQLite",
+      "status": "generated_unverified",
+      "sources": [
+        {
+          "title": "Database application design",
+          "text": "SQLite transactions parameterized queries validation and REST APIs support application tracking.",
+          "score": 0.5434,
+          "matched_terms": [
+            "and",
+            "database",
+            "parameterized",
+            "queries",
+            "transactions"
+          ]
+        },
+        {
+          "title": "Software engineering practices",
+          "text": "Version control pull requests automated tests and continuous integration improve software reliability.",
+          "score": 0.0378,
+          "matched_terms": [
+            "and"
+          ]
+        }
+      ],
+      "expected_fragments": [
+        "sqlite"
+      ],
+      "expected_source": "Database application design",
+      "all_expected_fragments_present": true,
+      "expected_source_retrieved": true
+    },
+    {
+      "question": "Which operator detects image edges?",
+      "answer": "Insufficient evidence",
+      "status": "generated_unverified",
+      "sources": [
+        {
+          "title": "Computer vision foundations",
+          "text": "Image filtering convolution Sobel edges and geometric transformations support computer vision.",
+          "score": 0.3433,
+          "matched_terms": [
+            "edges",
+            "image"
+          ]
+        }
+      ],
+      "expected_fragments": [
+        "sobel"
+      ],
+      "expected_source": "Computer vision foundations",
+      "all_expected_fragments_present": false,
+      "expected_source_retrieved": true
+    },
+    {
+      "question": "What is the accuracy of logistic regression?",
+      "answer": "Insufficient evidence",
+      "status": "generated_unverified",
+      "sources": [
+        {
+          "title": "Machine learning validation",
+          "text": "Training validation test splits prevent data leakage. Logistic regression predicts probabilities for classification.",
+          "score": 0.3471,
+          "matched_terms": [
+            "logistic",
+            "regression"
+          ]
+        }
+      ],
+      "expected_fragments": [
+        "insufficient evidence"
+      ],
+      "expected_source": null,
+      "all_expected_fragments_present": true,
+      "expected_source_retrieved": null
+    },
+    {
+      "question": "How much does SQLite cost?",
+      "answer": "Insufficient evidence",
+      "status": "generated_unverified",
+      "sources": [
+        {
+          "title": "Database application design",
+          "text": "SQLite transactions parameterized queries validation and REST APIs support application tracking.",
+          "score": 0.2615,
+          "matched_terms": [
+            "sqlite"
+          ]
+        }
+      ],
+      "expected_fragments": [
+        "insufficient evidence"
+      ],
+      "expected_source": null,
+      "all_expected_fragments_present": true,
+      "expected_source_retrieved": null
+    },
+    {
+      "question": "zzzxxyy",
+      "answer": "Insufficient evidence.",
+      "status": "no_lexical_match",
+      "sources": [],
+      "expected_fragments": [
+        "insufficient evidence"
+      ],
+      "expected_source": null,
+      "all_expected_fragments_present": true,
+      "expected_source_retrieved": null
+    }
+  ]
+}

@@ -2,6 +2,10 @@
 
 > **Recruiter quick view:** real PubMed benchmark, official train/dev/test splits, explainable TF-IDF/logistic baseline, PyTorch neural baseline, robustness testing, browser/Python parity, error analysis, tests, and CI. Start with [RECRUITER_OVERVIEW.md](RECRUITER_OVERVIEW.md), [PORTFOLIO_EVIDENCE.md](PORTFOLIO_EVIDENCE.md), [MODEL_CARD.md](MODEL_CARD.md), and the [interactive model demo](https://erickvera610.github.io/research-search/model-demo.html).
 
+## New: local GenAI question answering
+
+[Reproduce the GenAI module and inspect its failures](GENAI.md). Optional FLAN-T5-small generation over the existing lexical retriever, with source text in JSON, a pinned model revision and CPU inference. Eight small development checks: six fragment matches, one incomplete answer and one incorrect abstention. This is not a general accuracy benchmark. The PubMed classifier and browser demo remain separate.
+
 ## Real-data scientific text classification
 
 The main experiment uses **PubMed 20k RCT** with official abstract-level splits:

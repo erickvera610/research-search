@@ -1,0 +1,4 @@
+# Install torch==2.15.0 from the CPU index first; see GENAI.md.
+transformers==4.57.1
+sentencepiece==0.2.3
+safetensors==0.8.0
